@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+target/
+src-tauri/gen/schemas/
+
+# Editor / OS
+.DS_Store
+*.log
+.vscode/
+.idea/
+target-dev/
+
+# Local settings and credentials
+.claude/
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# Locally generated promotional media
+promo-video/

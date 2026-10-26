@@ -1,0 +1,24 @@
+{
+  "id": "builtin-env-to-yaml",
+  "name": ".env / properties → YAML",
+  "description": "Convert KEY=value or key: value pairs into a YAML mapping, inferring numbers and booleans.",
+  "tags": [
+    "yaml",
+    "config",
+    "env"
+  ],
+  "author": "PasteCompiler",
+  "input": {
+    "format": "key_value"
+  },
+  "steps": [],
+  "output": {
+    "format": "yaml"
+  },
+  "translations": {
+    "tr": {
+      "name": ".env / properties → YAML",
+      "description": "KEY=value veya key: value çiftlerini sayı ve mantıksal değerleri algılayarak YAML eşlemesine dönüştürür."
+    }
+  }
+}

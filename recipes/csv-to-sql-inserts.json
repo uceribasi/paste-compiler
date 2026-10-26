@@ -1,0 +1,28 @@
+{
+  "id": "builtin-csv-to-sql-inserts",
+  "name": "Table → SQL INSERT statements",
+  "description": "Turn any table (CSV, Excel selection, Markdown, JSON array) into a CREATE TABLE statement plus a batched INSERT. Change the table name in the output options.",
+  "tags": [
+    "sql",
+    "database",
+    "table"
+  ],
+  "author": "PasteCompiler",
+  "input": {
+    "format": null
+  },
+  "steps": [],
+  "output": {
+    "format": "sql_insert",
+    "table_name": "data",
+    "create_table": true,
+    "dialect": "postgres",
+    "batch": true
+  },
+  "translations": {
+    "tr": {
+      "name": "Tablo → SQL INSERT ifadeleri",
+      "description": "Herhangi bir tabloyu (CSV, Excel seçimi, Markdown, JSON dizisi) CREATE TABLE ifadesi ve toplu INSERT'e dönüştürür. Tablo adını çıktı seçeneklerinden değiştir."
+    }
+  }
+}

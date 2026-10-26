@@ -1,0 +1,29 @@
+{
+  "id": "builtin-emails-template",
+  "name": "Contacts → mailing list",
+  "description": "Render each row as `Name <email>` separated by commas. Expects columns named name and email; rename them in the steps if yours differ.",
+  "tags": [
+    "template",
+    "email",
+    "contacts"
+  ],
+  "author": "PasteCompiler",
+  "steps": [
+    {
+      "op": "filter_rows",
+      "column": "email",
+      "condition": "not_empty"
+    }
+  ],
+  "output": {
+    "format": "template",
+    "template": "{{name}} <{{email}}>",
+    "separator": ", "
+  },
+  "translations": {
+    "tr": {
+      "name": "Kişiler → e-posta listesi",
+      "description": "Her satırı virgülle ayrılmış `Ad <e-posta>` biçiminde yazar. name ve email sütunlarını bekler; farklıysa adımlarda yeniden adlandır."
+    }
+  }
+}

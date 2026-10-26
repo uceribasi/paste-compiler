@@ -1,0 +1,30 @@
+[package]
+name = "pastecompiler-core"
+description = "Core detection, conversion, validation and recipe engine for PasteCompiler"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+csv = "1"
+serde_yaml = "0.9"
+toml = "0.8"
+roxmltree = "0.21"
+scraper = "0.29"
+regex = "1"
+heck = "0.5"
+thiserror = "2"
+uuid = { version = "1", features = ["v4", "serde"] }
+base64 = "0.22"
+chrono = { version = "0.4", features = ["serde", "clock"] }
+indexmap = { version = "2", features = ["serde"] }
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+async-trait = "0.1"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+wiremock = "0.6"
+tiny_http = "0.12"

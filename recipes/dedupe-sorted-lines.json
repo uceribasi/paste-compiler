@@ -1,0 +1,40 @@
+{
+  "id": "builtin-dedupe-sorted-lines",
+  "name": "Unique sorted lines",
+  "description": "Remove empty and duplicate lines from pasted text and sort the rest alphabetically.",
+  "tags": [
+    "text",
+    "cleanup"
+  ],
+  "author": "PasteCompiler",
+  "input": {
+    "format": "text"
+  },
+  "steps": [
+    {
+      "op": "text_lines",
+      "transform": "trim"
+    },
+    {
+      "op": "text_lines",
+      "transform": "remove_empty"
+    },
+    {
+      "op": "text_lines",
+      "transform": "dedupe"
+    },
+    {
+      "op": "text_lines",
+      "transform": "sort"
+    }
+  ],
+  "output": {
+    "format": "plain_lines"
+  },
+  "translations": {
+    "tr": {
+      "name": "Benzersiz sıralı satırlar",
+      "description": "Yapıştırılan metinden boş ve yinelenen satırları kaldırır, kalanları alfabetik sıralar."
+    }
+  }
+}

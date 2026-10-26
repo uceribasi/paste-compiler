@@ -1,0 +1,33 @@
+{
+  "id": "builtin-lines-to-json-array",
+  "name": "Lines → JSON array",
+  "description": "Take a plain list of lines (or a bulleted list), drop empty lines and bullets, and emit a JSON array of strings.",
+  "tags": [
+    "json",
+    "list",
+    "text"
+  ],
+  "author": "PasteCompiler",
+  "input": {
+    "format": "list"
+  },
+  "steps": [
+    {
+      "op": "text_lines",
+      "transform": "trim"
+    },
+    {
+      "op": "text_lines",
+      "transform": "remove_empty"
+    }
+  ],
+  "output": {
+    "format": "json_compact"
+  },
+  "translations": {
+    "tr": {
+      "name": "Satırlar → JSON dizisi",
+      "description": "Düz satır listesini (veya madde işaretli listeyi) alır, boş satırları ve madde işaretlerini atar, dizge dizisi olarak JSON üretir."
+    }
+  }
+}

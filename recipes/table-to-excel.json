@@ -1,0 +1,22 @@
+{
+  "id": "builtin-table-to-excel",
+  "name": "Anything → Excel / Google Sheets",
+  "description": "Produce tab-separated text that pastes straight into Excel, Numbers or Google Sheets as a proper grid.",
+  "tags": [
+    "excel",
+    "sheets",
+    "tsv"
+  ],
+  "author": "PasteCompiler",
+  "steps": [],
+  "output": {
+    "format": "tsv",
+    "header": true
+  },
+  "translations": {
+    "tr": {
+      "name": "Her şey → Excel / Google Sheets",
+      "description": "Excel, Numbers veya Google Sheets'e doğrudan düzgün bir tablo olarak yapıştırılabilen sekmeyle ayrılmış metin üretir."
+    }
+  }
+}

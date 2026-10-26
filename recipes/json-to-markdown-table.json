@@ -1,0 +1,26 @@
+{
+  "id": "builtin-json-to-markdown-table",
+  "name": "JSON → Markdown table",
+  "description": "Flatten a JSON array of objects (nested keys become dotted column names) and render it as an aligned Markdown table ready for READMEs and issues.",
+  "tags": [
+    "markdown",
+    "json",
+    "docs"
+  ],
+  "author": "PasteCompiler",
+  "steps": [
+    {
+      "op": "flatten"
+    }
+  ],
+  "output": {
+    "format": "markdown_table",
+    "align": true
+  },
+  "translations": {
+    "tr": {
+      "name": "JSON → Markdown tablosu",
+      "description": "JSON nesne dizisini düzleştirir (iç içe anahtarlar noktalı sütun adı olur) ve README'ler ile issue'lar için hizalı bir Markdown tablosu üretir."
+    }
+  }
+}

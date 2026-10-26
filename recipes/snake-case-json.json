@@ -1,0 +1,30 @@
+{
+  "id": "builtin-snake-case-json",
+  "name": "Clean headers → snake_case JSON",
+  "description": "Trim cells, normalise column names to snake_case and emit pretty JSON — handy for turning spreadsheet exports into API payloads.",
+  "tags": [
+    "json",
+    "api",
+    "cleanup"
+  ],
+  "author": "PasteCompiler",
+  "steps": [
+    {
+      "op": "trim_cells"
+    },
+    {
+      "op": "header_case",
+      "case": "snake"
+    }
+  ],
+  "output": {
+    "format": "json",
+    "indent": 2
+  },
+  "translations": {
+    "tr": {
+      "name": "Başlıkları temizle → snake_case JSON",
+      "description": "Hücreleri kırpar, sütun adlarını snake_case yapar ve okunaklı JSON üretir; tablo dışa aktarımlarını API yüküne çevirmek için kullanışlıdır."
+    }
+  }
+}
