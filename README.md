@@ -1,12 +1,14 @@
 # PasteCompiler
 
+[English](README.md) · [Türkçe](README.tr.md)
+
 **Convert anything you copied into the format you need.**
 
 PasteCompiler is an open-source desktop app (Rust + Tauri + React) that takes whatever is on your clipboard — a table copied from Excel, a JSON blob, CSV, YAML, TOML, XML, a Markdown or HTML table, `.env`-style key/value pairs, a bulleted list or plain text — detects what it is, and converts it into the format you need while checking that no data was lost along the way.
 
 - **Automatic detection** of the input format (with delimiter and header-row sniffing for CSV-like data) and a ranked list of sensible output formats.
 - **17 output formats**: JSON (pretty / compact / lines), CSV, TSV for Excel & Google Sheets, Markdown table, HTML table, YAML, TOML, XML, SQL `INSERT` (Postgres / MySQL / SQLite, optional `CREATE TABLE`), Markdown & numbered lists, plain lines, key/value pairs, custom `{{templates}}` and plain text.
-- **Validation after every conversion**: the output is parsed back and compared with the input (row counts, columns, cell values, nested keys), and every lossy step — flattened nesting, dropped `null`s in TOML, padded ragged rows, renamed duplicate headers, sanitized XML names, type coercions… — is reported with its severity.
+- **A report after every conversion**: supported output formats are parsed back and checked for differences (row counts, columns, cell values, nested keys). Detected changes and potentially lossy steps — flattened nesting, dropped `null`s in TOML, padded ragged rows, renamed duplicate headers, sanitized XML names, type coercions… — are reported with their severity. SQL, custom templates and plain text do not support this round-trip check; the report marks verification as unavailable.
 - **Recipes**: reusable, declarative conversion pipelines (select / drop / rename columns, filter, sort, limit, dedupe, split, computed columns, case conversion, regex replace, flatten / unflatten, line operations, …) plus an output format and its options. Save them, run them with one click, export them as JSON files or short share codes (`pcr1.…`) and import recipes other people made.
 - **Describe it in plain language**: type "only the name and email columns, sorted by name, as SQL inserts for table users" and get a recipe that is tested on your data before you see it. Works **fully offline** with the built-in rule engine, or with a local model via **Ollama**, any **OpenAI-compatible** server (LM Studio, llama.cpp, vLLM…) or **Anthropic Claude** with your own key.
 - **Local first**: nothing leaves your machine unless you configure a remote AI provider — and even then you decide whether a data sample is sent.
@@ -15,7 +17,7 @@ PasteCompiler is an open-source desktop app (Rust + Tauri + React) that takes wh
 
 ## Install / run
 
-Prerequisites: [Rust](https://rustup.rs) (stable), Node.js ≥ 18, and the usual Tauri system dependencies for your platform (Xcode Command Line Tools on macOS; see the [Tauri prerequisites](https://tauri.app/start/prerequisites/)).
+Prerequisites: [Rust](https://rustup.rs) (stable), Node.js 22.x (22.12 or newer), 24.x, or ≥ 26, and the usual Tauri system dependencies for your platform (Xcode Command Line Tools on macOS; see the [Tauri prerequisites](https://tauri.app/start/prerequisites/)). These Node.js versions support both the build tools and the test dependencies.
 
 ```bash
 npm install
@@ -63,7 +65,7 @@ Everything is in the `pastecompiler-core` crate (`crates/pastecompiler-core`); t
 | `coerce` | Converts between those shapes (nested JSON → flat table with dotted columns, table → array of objects, …) and records what was lossy. |
 | `recipe` | The `Recipe` schema, the step interpreter and a tolerant parser for hand-written or model-generated recipes. |
 | `output` | One writer per output format. |
-| `validate` | Parses the output back, compares it with the source and builds the report (`lossless`, round-trip status, issues, differences, stats). |
+| `validate` | Parses supported output formats back, checks for differences and builds the report (`lossless`, round-trip status, issues, differences, stats). Marks round-trip verification as unavailable for SQL, templates and plain text. |
 | `ai` | Prompt building, the Ollama / OpenAI-compatible / Anthropic clients, and the offline rule engine. |
 | `store`, `settings` | Recipes and settings persisted as JSON in the app data directory. |
 
@@ -153,7 +155,7 @@ The recipe parser is tolerant: `"output": "csv"`, `"type"` instead of `"op"`, `"
 | **OpenAI-compatible** | your machine or a server you trust | any `/v1/chat/completions` endpoint (LM Studio, llama.cpp, vLLM, LocalAI…) |
 | **Anthropic Claude** | Anthropic API | paste your API key in Settings (stored locally); default model `claude-opus-5-5`, refusal fallbacks enabled |
 
-Whatever the provider, the generated recipe is **test-run on your data** before it is shown. If it fails, the model gets up to two repair rounds with the exact error; if it still fails (or the provider is unreachable) the offline rules take over and the UI tells you why. Sending a sample of your data to the model can be turned off in Settings.
+Whatever the provider, when input data is available the generated recipe is **test-run on that data** before it is shown. If it fails, the model gets up to two repair rounds with the exact error. If it still fails (or the provider is unreachable), offline rules are tried when fallback is enabled; this is on by default. The UI reports the reason, or an error if the rules cannot interpret the instruction either. Sending a sample of your data to the model can be turned off in Settings.
 
 ---
 
@@ -188,7 +190,9 @@ MIT — see [LICENSE](LICENSE).
 
 ## Türkçe özet
 
-PasteCompiler, kopyaladığın herhangi bir veriyi (Excel tablosu, JSON, CSV, YAML, TOML, XML, Markdown/HTML tablosu, `.env`, liste, düz metin) otomatik algılayıp istediğin formata dönüştüren açık kaynak bir masaüstü uygulamasıdır. Her dönüşümden sonra çıktı geri ayrıştırılıp girdiyle karşılaştırılır; veri kaybı, format hatası ve tutarsızlıklar rapor edilir. Dönüşüm adımlarını **tarif** olarak kaydedip paylaşabilir (`pcr1.…` paylaşım kodu veya JSON dosyası), tarifleri **doğal dille** tanımlayabilirsin — tamamen çevrimdışı kural motoruyla ya da Ollama / OpenAI-uyumlu sunucu / Anthropic ile. Arayüz ve tüm motor mesajları **Türkçe** ve İngilizce olarak sunulur; dil varsayılan olarak sistem dilini izler, *Ayarlar → Davranış → Dil* bölümünden değiştirilebilir.
+[Kurulum ve kullanım dahil Türkçe dokümantasyonun tamamını oku →](README.tr.md)
+
+PasteCompiler, kopyaladığın verinin formatını otomatik algılayıp istediğin formata dönüştüren açık kaynak bir masaüstü uygulamasıdır. Desteklenen çıktı formatları yeniden ayrıştırılarak kontrol edilir; tespit edilen değişiklikler, veri kayıpları ve hatalar raporlanır. SQL, özel şablonlar ve düz metin çıktılarında bu kontrolün desteklenmediği belirtilir. Dönüşüm adımlarını **tarif** olarak kaydedip paylaşabilir, tarifleri **doğal dille** tanımlayabilirsin. Temel dönüşümler ve yerleşik kural motoru çevrimdışı çalışır; istersen Ollama, OpenAI uyumlu bir sunucu veya Anthropic kullanabilirsin. Arayüz ve motor mesajları Türkçe ve İngilizcedir.
 
 ```bash
 npm install
