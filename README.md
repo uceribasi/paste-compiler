@@ -2,6 +2,8 @@
 
 [English](README.md) · [Türkçe](README.tr.md)
 
+[**Download for macOS (Apple Silicon)**](https://github.com/uceribasi/paste-compiler/releases/latest)
+
 **Convert anything you copied into the format you need.**
 
 PasteCompiler is an open-source desktop app (Rust + Tauri + React) that takes whatever is on your clipboard — a table copied from Excel, a JSON blob, CSV, YAML, TOML, XML, a Markdown or HTML table, `.env`-style key/value pairs, a bulleted list or plain text — detects what it is, and converts it into the format you need while checking that no data was lost along the way.
@@ -17,6 +19,18 @@ PasteCompiler is an open-source desktop app (Rust + Tauri + React) that takes wh
 
 ## Install / run
 
+### Download the app
+
+The ready-to-run build is for **Apple Silicon Macs (M1 or newer), macOS 11 or later**. You do not need Rust, Node.js or an AI account for the built-in conversions.
+
+1. Download `PasteCompiler_0.1.0_aarch64.dmg` from [GitHub Releases](https://github.com/uceribasi/paste-compiler/releases/latest).
+2. Open the disk image and drag **PasteCompiler** into **Applications**.
+3. Open PasteCompiler from Applications. This release is not Developer ID signed or notarized. If macOS blocks the first launch, open **System Settings → Privacy & Security → Open Anyway** after attempting to launch it, then confirm **Open**.
+
+A ZIP of the same `.app` is also available. Extract it and move PasteCompiler into Applications. Release assets include `SHA256SUMS.txt` for checking the downloads. Prebuilt Intel Mac, Windows and Linux packages are not included in this release.
+
+### Build from source
+
 Prerequisites: [Rust](https://rustup.rs) (stable), Node.js 22.x (22.12 or newer), 24.x, or ≥ 26, and the usual Tauri system dependencies for your platform (Xcode Command Line Tools on macOS; see the [Tauri prerequisites](https://tauri.app/start/prerequisites/)). These Node.js versions support both the build tools and the test dependencies.
 
 ```bash
@@ -25,7 +39,7 @@ npm run tauri dev        # development build with hot reload
 npm run tauri build      # release bundle in target/release/bundle/
 ```
 
-On macOS the release build produces `PasteCompiler.app` (and a `.dmg`) under `target/release/bundle/`. The app is not code-signed, so the first launch needs a right-click → *Open*. The `.dmg` step drives Finder through AppleScript and needs the Automation permission the first time; if it stalls, build just the app with `npm run tauri build -- --bundles app`.
+On macOS the release build produces `PasteCompiler.app` (and a `.dmg`) under `target/release/bundle/`. The `.dmg` step drives Finder through AppleScript and needs the Automation permission the first time; if it stalls, build just the app with `npm run tauri build -- --bundles app`.
 
 ### Using the UI in a browser (optional)
 

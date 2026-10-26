@@ -2,6 +2,8 @@
 
 [English](README.md) · [Türkçe](README.tr.md)
 
+[**macOS için indir (Apple Silicon)**](https://github.com/uceribasi/paste-compiler/releases/latest)
+
 **Kopyaladığın veriyi ihtiyacın olan formata dönüştür.**
 
 PasteCompiler, panondaki verinin formatını otomatik algılayıp istediğin formata dönüştüren açık kaynak bir masaüstü uygulamasıdır. Excel'den kopyalanan tablolar, JSON, CSV, YAML, TOML, XML, Markdown veya HTML tabloları, `.env` biçimindeki anahtar/değer çiftleri, listeler ve düz metinlerle çalışır. Rust, Tauri ve React ile geliştirilmiştir.
@@ -17,6 +19,18 @@ PasteCompiler, panondaki verinin formatını otomatik algılayıp istediğin for
 
 ## Kurulum ve çalıştırma
 
+### Hazır uygulamayı indir
+
+Hazır paket **Apple Silicon işlemcili Mac'ler (M1 ve sonrası), macOS 11 ve üzeri** içindir. Yerleşik dönüşümler için Rust, Node.js veya bir yapay zekâ hesabı gerekmez.
+
+1. [GitHub Releases](https://github.com/uceribasi/paste-compiler/releases/latest) sayfasından `PasteCompiler_0.1.0_aarch64.dmg` dosyasını indir.
+2. Disk görüntüsünü aç ve **PasteCompiler** uygulamasını **Applications / Uygulamalar** klasörüne sürükle.
+3. PasteCompiler'ı Uygulamalar klasöründen aç. Bu sürüm Developer ID ile imzalanmış veya Apple tarafından noterlenmiş değildir. macOS ilk açılışı engellerse açmayı denedikten sonra **Sistem Ayarları → Gizlilik ve Güvenlik → Yine de Aç** yolunu izle ve **Aç** seçeneğini onayla.
+
+Aynı `.app` paketinin ZIP sürümü de bulunur. ZIP'i açıp PasteCompiler'ı Uygulamalar klasörüne taşıyabilirsin. İndirilen dosyaları doğrulamak için sürüme `SHA256SUMS.txt` de eklenmiştir. Bu sürümde Intel Mac, Windows ve Linux için hazır paket bulunmuyor.
+
+### Kaynak koddan derle
+
 Gereksinimler: [Rust](https://rustup.rs) (kararlı sürüm), Node.js 22.x (22.12 veya üzeri), 24.x ya da 26 ve üzeri; ayrıca işletim sistemine uygun Tauri bağımlılıkları. Bu Node.js sürümleri hem derleme araçları hem de test bağımlılıklarıyla uyumludur. macOS için Xcode Command Line Tools gerekir; diğer platformlar ve ayrıntılar için [Tauri gereksinimlerine](https://tauri.app/start/prerequisites/) bakabilirsin.
 
 Proje klasöründe çalıştır:
@@ -27,7 +41,7 @@ npm run tauri dev        # değişiklikleri anında yükleyen geliştirme sürü
 npm run tauri build      # target/release/bundle/ altında dağıtım paketi
 ```
 
-macOS derlemesi, `target/release/bundle/` altında `PasteCompiler.app` ve bir `.dmg` dosyası üretir. Uygulama kod imzası taşımadığı için ilk açılışta sağ tıklayıp **Aç** seçeneğini kullanman gerekebilir. `.dmg` oluşturma adımı Finder'ı AppleScript üzerinden kontrol eder ve ilk seferde Otomasyon izni ister. Bu adım takılırsa yalnızca uygulama paketini oluşturabilirsin:
+macOS derlemesi, `target/release/bundle/` altında `PasteCompiler.app` ve bir `.dmg` dosyası üretir. `.dmg` oluşturma adımı Finder'ı AppleScript üzerinden kontrol eder ve ilk seferde Otomasyon izni ister. Bu adım takılırsa yalnızca uygulama paketini oluşturabilirsin:
 
 ```bash
 npm run tauri build -- --bundles app
