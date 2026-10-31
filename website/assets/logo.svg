@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1f2a44"/>
+      <stop offset="100%" stop-color="#0f1526"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4fd1c5"/>
+      <stop offset="100%" stop-color="#6ea8fe"/>
+    </linearGradient>
+  </defs>
+  <rect x="64" y="64" width="896" height="896" rx="200" fill="url(#bg)"/>
+  <!-- clipboard body -->
+  <rect x="256" y="232" width="512" height="600" rx="56" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.35" stroke-width="20"/>
+  <rect x="412" y="184" width="200" height="104" rx="40" fill="url(#accent)"/>
+  <!-- table lines (input) -->
+  <rect x="320" y="340" width="160" height="34" rx="17" fill="#ffffff" fill-opacity="0.55"/>
+  <rect x="320" y="410" width="120" height="34" rx="17" fill="#ffffff" fill-opacity="0.35"/>
+  <rect x="320" y="480" width="140" height="34" rx="17" fill="#ffffff" fill-opacity="0.35"/>
+  <!-- arrow -->
+  <path d="M500 430 L580 430 L580 392 L652 450 L580 508 L580 470 L500 470 Z" fill="url(#accent)"/>
+  <!-- braces (output) -->
+  <text x="690" y="500" font-family="Menlo, Monaco, monospace" font-size="150" font-weight="700" fill="url(#accent)" text-anchor="middle">{}</text>
+  <!-- bottom code lines -->
+  <rect x="320" y="600" width="384" height="30" rx="15" fill="#4fd1c5" fill-opacity="0.8"/>
+  <rect x="320" y="660" width="300" height="30" rx="15" fill="#6ea8fe" fill-opacity="0.7"/>
+  <rect x="320" y="720" width="340" height="30" rx="15" fill="#ffffff" fill-opacity="0.35"/>
+</svg>
